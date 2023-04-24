@@ -1,9 +1,12 @@
 stats <- names(cbb)
 
-get_team_stats <- function(team, stats=names(cbb), year=seq(2013, 2019)) {
+get_teams_stats <- function(teams, stats=names(cbb), years=seq(2013, 2019)) {
+  # error check
+  validate_inputs(teams, stats, years)
+
   if (length(stats) != length(names(cbb))) {
     stats <- c("TEAM", stats, "YEAR")
   }
-    filter(cbb, TEAM == team & YEAR %in% year) |>
+    filter(cbb, TEAM %in% teams & YEAR %in% years) |>
          select(stats)
 }
