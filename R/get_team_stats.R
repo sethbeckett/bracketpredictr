@@ -21,10 +21,13 @@ get_team_stats <- function(teams, stats=names(cbb), years=seq(2013, 2019)) {
   # error check
   validate_inputs(teams, stats, years)
 
+  # shows the team and year even if they aren't specified by the user in stats
   if (length(stats) != length(names(cbb))) {
     stats <- c("TEAM", stats, "YEAR")
   }
-    dplyr::filter(cbb, TEAM %in% teams & YEAR %in% years) |>
-      dplyr::select(stats) |>
-      dplyr::arrange(YEAR)
+
+  # filter the dataset and return the specified teams, stats, and year
+  dplyr::filter(cbb, TEAM %in% teams & YEAR %in% years) |>
+    dplyr::select(stats) |>
+    dplyr::arrange(YEAR)
 }
