@@ -1,3 +1,5 @@
+utils::globalVariables(c("cbb", "TEAM", "YEAR"))
+
 #' The Function to Get Team Stats
 #'
 #' Returns a dataframe containing one or two teams stats. Which stats are
@@ -16,7 +18,7 @@
 #' get_team_stats("UCLA")
 #' get_team_stats(c("Utah St.", "UNLV"),
 #'   stats=c("CONF", "G", "W", "ADJOE"), years = 2017)
-get_team_stats <- function(teams, stats=names(cbb), years=seq(2013, 2019)) {
+get_team_stats <- function(teams, stats = names(cbb), years = seq(2013, 2019)) {
 
   # error check
   validate_inputs(teams, stats, years)

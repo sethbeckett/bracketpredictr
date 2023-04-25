@@ -31,10 +31,10 @@ The variables are as follows:
   \item DRB: Offensive Rebound Rate Allowed
   \item FTR : Free Throw Rate (How often the given team shoots Free Throws)
   \item FTRD: Free Throw Rate Allowed
-  \item 2P_O: Two-Point Shooting Percentage
-  \item 2P_D: Two-Point Shooting Percentage Allowed
-  \item 3P_O: Three-Point Shooting Percentage
-  \item 3P_D: Three-Point Shooting Percentage Allowed
+  \item X2P_O: Two-Point Shooting Percentage
+  \item X2P_D: Two-Point Shooting Percentage Allowed
+  \item X3P_O: Three-Point Shooting Percentage
+  \item X3P_D: Three-Point Shooting Percentage Allowed
   \item ADJ_T: Adjusted Tempo (An estimate of the tempo (possessions per 40 minutes) a team would have against the team that wants to play at an average Division I tempo)
   \item WAB: Wins Above Bubble (The bubble refers to the cut off between making the NCAA March Madness Tournament and not making it)
   \item POSTSEASON: Round where the given team was eliminated or where their season ended (R68 = First Four, R64 = Round of 64, R32 = Round of 32, S16 = Sweet Sixteen, E8 = Elite Eight, F4 = Final Four, 2ND = Runner-up, Champion = Winner of the NCAA March Madness Tournament for that given year)
@@ -44,9 +44,6 @@ The variables are as follows:
 }
 \source{
 Andrew Sundberg. (3/15/2021). College Basketball Dataset, Version 4. Retrieved 3/31/2023 from https://www.kaggle.com/datasets/andrewsundberg/college-basketball-dataset
-}
-\references{
-%%  ~~ possibly secondary sources and usages ~~
 }
 \examples{
 data(cbb)

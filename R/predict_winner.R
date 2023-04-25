@@ -1,10 +1,14 @@
+utils::globalVariables(c("cbb", "TEAM", "YEAR"))
+
 #' predict_winner
 #'
+#' @importFrom magrittr %>%
+#' @import dplyr
 #' @param team1 The first team playing in the game to be predicted
 #' @param team2 The second team playing in the game to be predicted
 #' @param stats The specific statistics the user would like to be compared
 #' between the two teams. Defaults to all available statistics.
-#' @param year The year of stats the user desires to be compared, defaults to
+#' @param years The year of stats the user desires to be compared, defaults to
 #' 2019 which is the most recent year.
 #' @param show_stats If true will return the table with the stats for the user
 #' to view
@@ -15,26 +19,20 @@
 #' @examples
 #' predict_winner("Utah St.", "Utah Valley")
 #' predict_winner("Utah St.", "Utah", c("G", "W", "ADJOE", "ADJDE",
-#' "3P_O", "3P_D", "ORB"))
-predict_winner <- function(team1, team2, stats = names(cbb), year = "2019",
+#' "X3P_O", "X3P_D", "ORB"))
+predict_winner <- function(team1, team2, stats = names(cbb), years = 2019,
                            show_stats = FALSE) {
 
   #Get team stats
-  team_1_stats <- get_team_stats(team1, stats, year = "2019")
-  team_2_stats <- get_team_stats(team2, stats, year = "2019")
+  team_1_stats <- get_team_stats(team1, stats, years = 2019)
+  team_2_stats <- get_team_stats(team2, stats, years = 2019)
   stats_df <- rbind(team_1_stats, team_2_stats)
 
   #Account for stats that are better to be lower such as "EFG_D"
   to_negate <- c("ADJDE", "EFG_D", "TOR", "FTRD", "X2P_D", "X3P_D")
 
   compare_df <- stats_df %>%
-    mutate_at(vars(to_negate), ~ . * -1)
-
-  #Remove stats that will not help the prediction
-  stats_to_ignore <- c("TEAM", "CONF", "G", "POSTSEASON", "SEED","YEAR")
-
-  final_df <- compare_df %>%
-    select(-any_of(stats_to_ignore))
+    mutate_at(vars(any_of(to_negate)), ~ . * -1)
 
   # Keep track of how many "points" each team receives from comparing stats
   team_1_points <- 0

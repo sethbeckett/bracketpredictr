@@ -23,8 +23,8 @@ The bracketpredictr package provides a set of functions for analyzing division I
 To install bracketpredictr, you can use the following commands, for installing from github or locally:
 
 ```{r, label="install", eval=FALSE}
-#library(devtools)
-#install_github("sethbeckett/bracketpredictr)
+library(devtools)
+install_github("sethbeckett/bracketpredictr")
 install.packages("bracketpredictr")
 
 ```
@@ -44,14 +44,14 @@ get_stats_names()
 
 This will output a list of all available teams, sorted alphabetically.
 
-To retrieve team stats for one or more teams, you can use the get_teams_stats function:
+To retrieve team stats for one or more teams, you can use the get_team_stats function:
 
 ```{r}
 teams <- c("Duke", "North Carolina", "Kentucky")
 stats <- c("TEAM", "W", "ADJOE", "ADJDE")
 years <- seq(2013, 2019)
 
-get_teams_stats(teams, stats, years)
+get_team_stats(teams, stats, years)
 ```
 
 This will output a table showing the requested stats for the specified teams and years. \### Predicting game winners To predict the winner of a game between two teams, you can use the predict_winner function:

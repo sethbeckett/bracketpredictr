@@ -1,3 +1,5 @@
+utils::globalVariables(c("cbb", "TEAM", "YEAR"))
+
 #' Validate inputs
 #'
 #' Validates inputs to make sure other functions are using correct arguments.
@@ -11,17 +13,17 @@
 #' a stop message
 #'
 validate_inputs <- function(teams, stats, years) {
-  if (!all(teams %in% cbb$TEAM)){
+  if (!all(teams %in% cbb$TEAM)) {
    stop("The team you entered is not in the data, call 'get_team_names()' to
         find the team you are looking for")
   }
   #stats
-  if (!all(stats %in% names(cbb))){
+  if (!all(stats %in% names(cbb))) {
     stop("This is a not a stat we have for basketball, try calling
          'get_stats_names' to find the stat you're looking for")
   }
   #years
-  if (!is.numeric(years) | !all(2013 <= years & years <= 2019)){
+  if (!is.numeric(years) || !all(2013 <= years & years <= 2019)) {
     stop("enter in year as a number or numeric vector of years between '13-'19")
   }
 }
