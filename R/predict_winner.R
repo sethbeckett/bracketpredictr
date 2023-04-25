@@ -20,13 +20,20 @@ predict_winner <- function(team1, team2, stats = names(cbb), year = "2019",
                            show_stats = FALSE) {
 
   #Get team stats
-  team_1_stats <- get_teams_stats(team1, stats, year = "2019")
-  team_2_stats <- get_teams_stats(team2, stats, year = "2019")
+  team_1_stats <- get_team_stats(team1, stats, year = "2019")
+  team_2_stats <- get_team_stats(team2, stats, year = "2019")
+  stats_df <- rbind(team_1_stats, team_2_stats)
+
+  #Account for stats that are better to be lower such as "EFG_D"
+  to_negate <- c("ADJDE", "EFG_D", "TOR", "FTRD", "X2P_D", "X3P_D")
+
+  compare_df <- stats_df %>%
+    mutate_at(vars(to_negate), ~ . * -1)
 
   #Remove stats that will not help the prediction
   stats_to_ignore <- c("TEAM", "CONF", "G", "POSTSEASON", "SEED","YEAR")
-  stats_df <- rbind(team_1_stats, team_2_stats)
-  compare_df <- stats_df %>%
+
+  final_df <- compare_df %>%
     select(-any_of(stats_to_ignore))
 
   # Keep track of how many "points" each team receives from comparing stats
@@ -63,7 +70,7 @@ predict_winner <- function(team1, team2, stats = names(cbb), year = "2019",
   if (show_stats) {
     print(stats_df)
   }
-  print(compare_df)
+
   # Return the winning team
   print(paste("After comparing the stats we believe that ", winner,
               " has a higher chance of winning the game."))
