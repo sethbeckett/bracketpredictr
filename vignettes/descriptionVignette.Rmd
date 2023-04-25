@@ -1,0 +1,72 @@
+---
+title: "descriptionVignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{descriptionVignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+The bracketpredictr package provides a set of functions for analyzing division I college basketball stats, from 2013 to 2019. With this package, you can easily retrieve team and game stats for a given season, predict winners of upcoming games, and move.
+
+## Installation
+
+To install bracketpredictr, you can use the following commands, for installing from github or locally:
+
+```{r, label="install", eval=FALSE}
+#library(devtools)
+#install_github("sethbeckett/bracketpredictr)
+install.packages("bracketpredictr")
+
+```
+
+## Example usage
+
+Here are some examples of how to use the functions provided by the bracketpredictr package:
+
+### Retrieving team stats
+
+To retrieve the names of all available team stats, you can use the get_stats_names function:
+
+```{r}
+library(bracketpredictr)
+get_stats_names()
+```
+
+This will output a list of all available teams, sorted alphabetically.
+
+To retrieve team stats for one or more teams, you can use the get_teams_stats function:
+
+```{r}
+teams <- c("Duke", "North Carolina", "Kentucky")
+stats <- c("TEAM", "W", "ADJOE", "ADJDE")
+years <- seq(2013, 2019)
+
+get_teams_stats(teams, stats, years)
+```
+
+This will output a table showing the requested stats for the specified teams and years. \### Predicting game winners To predict the winner of a game between two teams, you can use the predict_winner function:
+
+```{r}
+team1 <- "Duke"
+team2 <- "North Carolina"
+stats <- c("ADJOE", "ADJDE")
+year <- 2019
+
+predict_winner(team1, team2, stats, year)
+```
+
+This will output the predicted winner of the game based on the specified stats and year.
+
+## Conclusion
+
+The bracketpredictr package provides a convenient set of functions for analyzing college basketball stats.
