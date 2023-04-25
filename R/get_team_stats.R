@@ -1,6 +1,5 @@
-
 get_teams_stats <- function(teams, stats=names(cbb), years=seq(2013, 2019)) {
-  data(cbb)
+
   # error check
   validate_inputs(teams, stats, years)
 
@@ -8,5 +7,6 @@ get_teams_stats <- function(teams, stats=names(cbb), years=seq(2013, 2019)) {
     stats <- c("TEAM", stats, "YEAR")
   }
     filter(cbb, TEAM %in% teams & YEAR %in% years) |>
-         select(stats)
+      select(stats) |>
+      arrange(YEAR)
 }
