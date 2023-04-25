@@ -1,4 +1,4 @@
-get_teams_stats <- function(teams, stats=names(cbb), years=seq(2013, 2019)) {
+get_team_stats <- function(teams, stats=names(cbb), years=seq(2013, 2019)) {
 
   # error check
   validate_inputs(teams, stats, years)
