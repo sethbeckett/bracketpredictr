@@ -16,11 +16,11 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-The bracketpredictr package provides a set of functions for analyzing division I college basketball stats, from 2013 to 2019. With this package, you can easily retrieve team and game stats for a given season, predict winners of upcoming games, and move.
+The `` bracketpredic`tr `` package provides a set of functions for analyzing Division I college basketball stats, from 2013 to 2019. With this package, you can easily retrieve team and game stats for a given season (or multiple), predict winners of upcoming games, and more.
 
 ## Installation
 
-To install bracketpredictr, you can use the following commands, for installing from github or locally:
+To install `bracketpredictr`, you can use the following commands, for installing from github or locally:
 
 ```{r, label="install", eval=FALSE}
 library(devtools)
@@ -29,13 +29,17 @@ install.packages("bracketpredictr")
 
 ```
 
+## Data - `cbb.csv` (College Basketball Dataset)
+
+This is a combined dataset of Division I basketball teams, across 6 seasons, and 22 variable stats.
+
 ## Example usage
 
-Here are some examples of how to use the functions provided by the bracketpredictr package:
+Here are some examples of how to use the functions provided by the `bracketpredictr` package:
 
 ### Retrieving team stats
 
-To retrieve the names of all available team stats, you can use the get_stats_names function:
+To retrieve the names of all available team stats, you can use the `get_stats_names()` function:
 
 ```{r}
 library(bracketpredictr)
@@ -44,7 +48,7 @@ get_stats_names()
 
 This will output a list of all available teams, sorted alphabetically.
 
-To retrieve team stats for one or more teams, you can use the get_team_stats function:
+To retrieve team stats for one or more teams, you can use the `get_team_stats()` function:
 
 ```{r}
 teams <- c("Duke", "North Carolina", "Kentucky")
@@ -54,7 +58,11 @@ years <- seq(2013, 2019)
 get_team_stats(teams, stats, years)
 ```
 
-This will output a table showing the requested stats for the specified teams and years. \### Predicting game winners To predict the winner of a game between two teams, you can use the predict_winner function:
+This will output a table showing the requested stats for the specified teams and years. If only wanting one team, stat, or year, you can input just that individual item instead of a vector.
+
+### Predicting game winners
+
+To predict the winner of a game between two teams, you can use the `predict_winner()` function:
 
 ```{r}
 team1 <- "Duke"
