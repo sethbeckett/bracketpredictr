@@ -13,7 +13,8 @@ Depends:
     R (>= 2.10)
 LazyData: true
 Imports: 
-    dplyr
+    dplyr,
+    magrittr
 Suggests: 
     knitr,
     rmarkdown
