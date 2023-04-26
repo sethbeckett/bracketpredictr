@@ -1,18 +1,23 @@
 ---
-title: "descriptionVignette"
-output: pdf_document
-vignette: >
-  %\VignetteIndexEntry{descriptionVignette}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: github_document
 ---
 
-```{r setup, include = FALSE}
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
 )
 ```
+
+# bracketpredictr
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/sethbeckett/bracketpredictr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/sethbeckett/bracketpredictr/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
 
 ## Introduction
 
