@@ -70,7 +70,8 @@ predict_winner <- function(team1, team2, stats = names(cbb), years = 2019,
   }
 
   # Return the winning team
-  print(paste("After comparing the stats we believe that ", winner,
-              " has a higher chance of winning the game."))
+  # print(paste("After comparing the stats we believe that ", winner,
+  #             " has a higher chance of winning the game."))
+  winner
 
 }
