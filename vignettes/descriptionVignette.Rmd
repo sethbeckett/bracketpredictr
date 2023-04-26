@@ -1,5 +1,5 @@
 ---
-title: "descriptionVignette"
+title: "Predicting Basketball Game Outcomes"
 output: pdf_document
 vignette: >
   %\VignetteIndexEntry{descriptionVignette}
