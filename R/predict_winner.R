@@ -17,7 +17,7 @@ utils::globalVariables(c("cbb", "TEAM", "YEAR"))
 #' @export
 #'
 #' @examples
-#' predict_winner("Utah St.", "Utah Valley")
+#' predict_winner("Utah St.", "Utah Valley", show_stats = TRUE)
 #' predict_winner("Utah St.", "Utah", c("G", "W", "ADJOE", "ADJDE",
 #' "X3P_O", "X3P_D", "ORB"))
 predict_winner <- function(team1, team2, stats = names(cbb), years = 2019,
