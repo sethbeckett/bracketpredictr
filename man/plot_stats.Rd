@@ -26,5 +26,5 @@ plot_stats("Utah", "Utah St.", c("W", "EFG_O", "EFG_D"))
 }
 \references{
 The NCAA colors dataset used in this function was originally created by Luke
-Benz for the ncaahoopsR package (https://github.com/lbenz730/ncaahoopsR).
+Benz for the ncaahoopsR package (https://github.com/lbenz730/ncaahoopR).
 }

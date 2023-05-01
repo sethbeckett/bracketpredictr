@@ -1,4 +1,4 @@
-utils::globalVariables(c("cbb", "TEAM", "YEAR"))
+utils::globalVariables(c("cbb"))
 
 #' Get Team Names
 #'

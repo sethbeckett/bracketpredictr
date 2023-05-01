@@ -1,5 +1,5 @@
 #' @importFrom dplyr filter
-utils::globalVariables(c("ncaa_name", "value", "color"))
+utils::globalVariables(c("ncaa_name", "TEAM", "YEAR", "value", "color"))
 
 #' Get the primary and secondary color for a team from the NCAA Colors data
 #'
@@ -35,7 +35,7 @@ get_team_color <- function(team_name) {
 #' @return A ggplot object showing the statistics over time for the two teams
 #' @references
 #' The NCAA colors dataset used in this function was originally created by Luke
-#' Benz for the ncaahoopsR package (https://github.com/lbenz730/ncaahoopsR).
+#' Benz for the ncaahoopsR package (https://github.com/lbenz730/ncaahoopR).
 #'
 #' @import ggplot2
 #' @import dplyr
