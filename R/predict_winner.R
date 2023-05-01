@@ -1,6 +1,14 @@
 utils::globalVariables(c("cbb"))
 
-#' predict_winner
+#' Predict Winner of Two Teams
+#'
+#' This function takes two college basketball teams, compares their statistics
+#' for a given year, and predicts the winner based on which team has higher
+#' values in the majority of the chosen statistics. If there is a tie, the
+#' function will just print "Tie". The function allows users to
+#' specify a particular set of statistics and the year for the comparison.
+#' Optionally, it can also print the statistics for both teams (before printing
+#' the winner) if show_stats is set to TRUE.
 #'
 #' @importFrom magrittr %>%
 #' @import dplyr
@@ -69,9 +77,5 @@ predict_winner <- function(team1, team2, stats = names(cbb), years = 2019,
     print(stats_df)
   }
 
-  # Return the winning team
-  # print(paste("After comparing the stats we believe that ", winner,
-  #             " has a higher chance of winning the game."))
   winner
-
 }
