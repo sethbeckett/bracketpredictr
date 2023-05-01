@@ -1,3 +1,6 @@
+#' @importFrom dplyr filter
+utils::globalVariables(c("ncaa_name", "value", "color"))
+
 #' Get the primary and secondary color for a team from the NCAA Colors data
 #'
 #' This function retrieves the primary and secondary colors for a specified team
@@ -14,8 +17,7 @@
 #' @examples
 #' get_team_color("Utah St.")
 get_team_color <- function(team_name) {
-  color_row <- ncaa_colors %>%
-    filter(ncaa_name == team_name)
+  color_row <- dplyr::filter(ncaa_colors, ncaa_name == team_name)
   primary_color <- color_row$primary_color
   secondary_color <- color_row$secondary_color
   return(c(primary_color, secondary_color))
@@ -23,9 +25,8 @@ get_team_color <- function(team_name) {
 
 #' Plot the desired statistics for two college basketball teams over time
 #'
-#' This function generates a line plot of the specified statistics for two
-#' college basketball teams over time. The plot includes a legend that shows
-#' the team names and their corresponding colors.
+#' This function creates a ggplot object to visualize the specified statistics
+#' for two college basketball teams over time.
 #'
 #' @param team1 The name of the first team
 #' @param team2 The name of the second team
@@ -43,18 +44,18 @@ get_team_color <- function(team_name) {
 #' @examples
 #' plot_stats("Utah", "Utah St.", c("W", "EFG_O", "EFG_D"))
 plot_stats <- function(team1, team2, stat) {
-  # Get the desired stats for each team
+  # Get the desired stats
   team_1_stat <- get_team_stats(team1, stats = stat)
   team_2_stat <- get_team_stats(team2, stats = stat)
 
   # Combine the two data frames
   team_stat <- rbind(team_1_stat, team_2_stat)
 
-  # Reshape the data into long format for plotting
-  team_stat_long <- gather(team_stat,
-                           key = "stat", value = "value", -c(TEAM, YEAR))
+  # Reshape the data into long format
+  team_stat_long <- tidyr::gather(team_stat,
+                                  key = "stat", value = "value", -c(TEAM, YEAR))
 
-  # Get the primary color of each team for plotting
+  # Get the color of each team for plotting
   primary_1 <- get_team_color(team1)[1]
   primary_2 <- get_team_color(team2)[1]
 
@@ -68,21 +69,22 @@ plot_stats <- function(team1, team2, stat) {
   )
 
   # Plot the team statistics over time
-  ggplot(team_stat_long,
-         aes(x = YEAR, y = value, color = color, linetype = stat, group = interaction(TEAM, stat))) +
-    geom_line() +
-    labs(x = "Year", y = "Statistic Value",
-         color = "Team", linetype = "Statistic") +
-    scale_color_identity(guide = "legend",
-                         breaks = team_color_df$color,
-                         labels = team_color_df$team) +
-    scale_linetype_manual(values = c(
+  ggplot2::ggplot(team_stat_long,
+                  ggplot2::aes(x = YEAR, y = value, color = color, linetype = stat, group = interaction(TEAM, stat))) +
+    ggplot2::geom_line() +
+    ggplot2::labs(x = "Year", y = "Statistic Value",
+                  color = "Team", linetype = "Statistic") +
+    ggplot2::scale_color_identity(guide = "legend",
+                                  breaks = team_color_df$color,
+                                  labels = team_color_df$team) +
+    ggplot2::scale_linetype_manual(values = c(
       "solid", "dashed", "dotted",
       "dotdash", "longdash", "twodash"
     )) +
-    theme_classic() +
-    scale_x_continuous(breaks = seq(
+    ggplot2::theme_classic() +
+    ggplot2::scale_x_continuous(breaks = seq(
       min(team_stat_long$YEAR),
       max(team_stat_long$YEAR), 1
     ))
 }
+
