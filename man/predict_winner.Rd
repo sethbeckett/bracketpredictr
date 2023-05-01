@@ -33,7 +33,7 @@ a print statement with a predicted winner, and stats if requested
 predict_winner
 }
 \examples{
-predict_winner("Utah St.", "Utah Valley")
+predict_winner("Utah St.", "Utah Valley", show_stats = TRUE)
 predict_winner("Utah St.", "Utah", c("G", "W", "ADJOE", "ADJDE",
 "X3P_O", "X3P_D", "ORB"))
 }
