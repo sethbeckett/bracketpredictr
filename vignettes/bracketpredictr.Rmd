@@ -78,4 +78,4 @@ This will output the predicted winner of the game based on the specified team st
 
 ## Conclusion
 
-The `bracketpredictr` package offers a efficient and convenient set of functions for analyzing college basketball stats. By providing easy access to past data and predictive capabilities, it enables users to conduct in-depth analyses and make well-informed predictions for college basketball tournaments in the future.
+The `bracketpredictr` package offers a efficient and convenient set of functions for analyzing college basketball stats. This can be done by getting team stats, making predictions on tournaments based on previous games, and more applicable functions. By providing easy access to past data and predictive capabilities, it enables users to conduct in-depth analyses and make well-informed predictions for college basketball tournaments in the future.
