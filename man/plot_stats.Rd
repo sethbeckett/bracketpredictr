@@ -18,7 +18,9 @@ plot_stats(team1, team2, stat)
 A ggplot object showing the statistics over time for the two teams
 }
 \description{
-Plot the desired statistics for two college basketball teams over time
+This function generates a line plot of the specified statistics for two
+college basketball teams over time. The plot includes a legend that shows
+the team names and their corresponding colors.
 }
 \examples{
 plot_stats("Utah", "Utah St.", c("W", "EFG_O", "EFG_D"))

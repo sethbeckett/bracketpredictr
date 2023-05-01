@@ -13,12 +13,13 @@ get_team_color(team_name)
 A vector containing the primary and secondary colors for the team
 }
 \description{
-Get the primary and secondary color for a team from the NCAA Colors data
+This function retrieves the primary and secondary colors for a specified team
+from the NCAA Colors data.
 }
 \examples{
 get_team_color("Utah St.")
 }
 \references{
 The NCAA colors dataset used in this function was originally created by Luke
-Benz for the ncaahoopsR package (https://github.com/lbenz730/ncaahoopsR).
+Benz for the ncaahoopsR package (https://github.com/lbenz730/ncaahoopR).
 }
