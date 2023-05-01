@@ -30,13 +30,12 @@ install.packages("bracketpredictr")
 
 ## Data - `cbb.csv` (College Basketball Dataset)
 
-This is a combined dataset of Division I basketball teams, across 6 seasons, and 22 variable stats. It includes the years 2013-2019, with 2020 specifically not included in the dataset because of a lack of a postseason due to COVID-19. 2013-2019 was manipulate (cleaned) with the intent of just those years being analyzed together, so for the sake of consistence, the year 2021 was omitted from being add. 
+This is a combined dataset of Division I basketball teams, across 6 seasons, and 22 variable stats (such as ORB, ADJOE, and SEED). It includes the years 2013-2019, with 2020 specifically not included in the dataset because of a lack of a postseason due to COVID-19. 2013-2019 was manipulate (cleaned) with the intent of just those years being analyzed together, so for the sake of consistence, the year 2021 was omitted from being add. 
 
 ### Source of Data
 *Andrew Sundberg. (3/15/2021). College Basketball Dataset, Version 4. Retrieved 3/31/2023 from https://www.kaggle.com/datasets/andrewsundberg/college-basketball-dataset*
 
 ## Example usage
-
 Here are some examples of how to use the functions provided by the `bracketpredictr` package:
 
 ### Retrieving team stats
