@@ -2,7 +2,7 @@
 % Please edit documentation in R/predict_winner.R
 \name{predict_winner}
 \alias{predict_winner}
-\title{predict_winner}
+\title{Predict Winner of Two Teams}
 \usage{
 predict_winner(
   team1,
@@ -30,7 +30,13 @@ to view}
 a print statement with a predicted winner, and stats if requested
 }
 \description{
-predict_winner
+This function takes two college basketball teams, compares their statistics
+for a given year, and predicts the winner based on which team has higher
+values in the majority of the chosen statistics. If there is a tie, the
+function will just print "Tie". The function allows users to
+specify a particular set of statistics and the year for the comparison.
+Optionally, it can also print the statistics for both teams (before printing
+the winner) if show_stats is set to TRUE.
 }
 \examples{
 predict_winner("Utah St.", "Utah Valley", show_stats = TRUE)

@@ -60,7 +60,8 @@ plot_stats <- function(team1, team2, stat) {
   primary_2 <- get_team_color(team2)[1]
 
   # Add a new column to the data frame for the colors
-  team_stat_long$color <- ifelse(team_stat_long$TEAM == team1, primary_1, primary_2)
+  team_stat_long$color <- ifelse(team_stat_long$TEAM == team1, primary_1,
+                                 primary_2)
 
   # Create a data frame for team names and their corresponding colors
   team_color_df <- data.frame(
@@ -70,7 +71,9 @@ plot_stats <- function(team1, team2, stat) {
 
   # Plot the team statistics over time
   ggplot2::ggplot(team_stat_long,
-                  ggplot2::aes(x = YEAR, y = value, color = color, linetype = stat, group = interaction(TEAM, stat))) +
+                  ggplot2::aes(x = YEAR, y = value, color = color,
+                               linetype = stat,
+                               group = interaction(TEAM, stat))) +
     ggplot2::geom_line() +
     ggplot2::labs(x = "Year", y = "Statistic Value",
                   color = "Team", linetype = "Statistic") +
@@ -87,4 +90,3 @@ plot_stats <- function(team1, team2, stat) {
       max(team_stat_long$YEAR), 1
     ))
 }
-

@@ -14,6 +14,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+<!-- # ```{r load_package, include=FALSE} -->
+<!-- # devtools::load_all() -->
+<!-- # ``` -->
+
 ## Introduction
 
 The `` bracketpredictr `` package offers a comprehensive set of functions for analyzing Division I college basketball stats, from 2013 to 2019. The package allows users to easily retrieve team and game stats for a given season or multiple seasons and predict the winners of upcoming games. This can be particularly helpful for those interested in performing in-depth analysis on college basketball performance and making informed predictions for tournaments such as the NCAA March Madness. You can find the Github repository for this package **[here](https://github.com/sethbeckett/bracketpredictr)**[https://github.com/sethbeckett/bracketpredictr].
@@ -23,9 +27,9 @@ The `` bracketpredictr `` package offers a comprehensive set of functions for an
 To install `bracketpredictr`, use the following commands for installing from github or locally:
 
 ```{r, label="install", eval=FALSE}
-library(devtools)
-install_github("sethbeckett/bracketpredictr")
-install.packages("bracketpredictr")
+# For installing from GitHub
+# install.packages("remotes")
+# remotes::install_github("sethbeckett/bracketpredictr")
 ```
 
 ## Data - `cbb.csv` (College Basketball Dataset)
@@ -35,10 +39,10 @@ This is a combined dataset of Division I basketball teams, across 6 seasons, and
 ### Source of Data
 *Andrew Sundberg. (3/15/2021). College Basketball Dataset, Version 4. Retrieved 3/31/2023 from https://www.kaggle.com/datasets/andrewsundberg/college-basketball-dataset*
 
-## Example usage
+## Example Usage
 Here are some examples of how to use the functions provided by the `bracketpredictr` package:
 
-### Retrieving team stats
+### Retrieving Team Stats
 
 To retrieve the names of all available team stats, you can use the `get_stats_names()` function:
 
@@ -61,7 +65,7 @@ get_team_stats(teams, stats, years)
 
 This will output a table showing the requested stats for the specified teams and years. If only wanting one team, stat, or year, you can input just that individual item instead of a vector.
 
-### Predicting game winners
+### Predicting Game Winners
 
 To predict the winner of a game between two teams, use the `predict_winner()` function:
 
@@ -75,6 +79,27 @@ predict_winner(team1, team2, stats, year)
 ```
 
 This will output the predicted winner of the game based on the specified team stats, and year.
+
+### Plotting Team Stats
+
+One convenient way our package can be used is to plot two teams' statistics over time, using our `plot_stats()` function. In this example, we'll use the the variables defined in the previous example to plot ADJOE and ADJDE of Utah vs BYU over time. This plot fucntion also correctly maps teams names to their corresponding colors, as can be seen below.
+
+```{r, fig.width=7, fig.height=5}
+plot_stats(team1, team2, stats)
+```
+
+Alternatively, one could use ggplot to do something similar if plotting the statistics of more teams is desired. For example, let's compare Utah, BYU, and Utah St. ADJOE.
+
+```{r, fig.width=7, fig.height=5}
+library(ggplot2)
+
+ut_adjoe <- get_team_stats(c("Utah", "BYU", "Utah St."), "ADJOE")
+
+ggplot(ut_adjoe, aes(x = YEAR, y = ADJOE, color = TEAM)) +
+  geom_line() +
+  theme_bw()
+```
+
 
 ## Conclusion
 
